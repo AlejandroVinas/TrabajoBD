@@ -37,9 +37,9 @@ const datoseditorial = [
     {ID: 303, NombreEditorial: 'EA', NumeroDeTitulos: 3 }
 ];
 const datossagas = [
-    {ID: 201, NombreEditorial: 'Forza Horizon', NumeroDeTitulos: 3 },
-    {ID: 202, NombreEditorial: 'Gran Turismo', NumeroDeTitulos: 2 },
-    {ID: 203, NombreEditorial: 'F1', NumeroDeTitulos: 3 }
+    {ID: 201, NombreSaga: 'Forza Horizon', NumeroDeTitulos: 3 },
+    {ID: 202, NombreSaga: 'Gran Turismo', NumeroDeTitulos: 2 },
+    {ID: 203, NombreSaga: 'F1', NumeroDeTitulos: 3 }
 ];
 	
 const datosstockconduccion = [
