@@ -59,7 +59,7 @@ db.once('open', async () => {
 	   await genero.deleteMany({});
 	   await stock.deleteMany({});
         
-       await desarrolladora.insertMany(datoseditoriasls);
+       await desarrolladora.insertMany(datoseditoriasles);
 	   await genero.insertMany(datosgeneros);
 	   await stock.insertMany(datosstocks);
         
