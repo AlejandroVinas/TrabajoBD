@@ -59,9 +59,9 @@ db.once('open', async () => {
 	   await genero.deleteMany({});
 	   await stock.deleteMany({});
         
-       await desarrolladora.insertMany(datoseditoriasles);
-	   await genero.insertMany(datosgeneros);
-	   await stock.insertMany(datosstocks);
+       await desarrolladora.insertMany(datosdesarrolladora);
+	   await genero.insertMany(datosgenero);
+	   await stock.insertMany(datosstock);
         
        console.log('Datos insertados correctamente en las colecciónes "desarrolladora","genero" y "stock" de MongoDB.');
         
