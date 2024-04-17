@@ -16,6 +16,8 @@ const empleadosSchema = new mongoose.Schema({
     salario: Number,
     cargo: String
 });
+// Colocar el índice de id
+empleadosSchema.index({ id: 1 }, { unique: true });
 
 // Definir el esquema para la colección 'encargos'
 const encargosSchema = new mongoose.Schema({
@@ -26,7 +28,9 @@ const encargosSchema = new mongoose.Schema({
     total_venta:{type:mongoose.Types.Decimal128},
     fecha_venta:{type: Date, default: Date.now}
     });
-    
+// Colocar el índice de id
+encargosSchema.index({ id: 1 }, { unique: true });
+
 // Definir el esquema para la colección 'miembros'
 const miembrosSchema = new mongoose.Schema({
     id:{type:Number},
@@ -36,6 +40,8 @@ const miembrosSchema = new mongoose.Schema({
     telefono:{type:String},
     direccion:{type:String}
     });
+// Colocar el índice de id
+miembrosSchema.index({ id: 1 }, { unique: true });
 
 // Modelo para la colección 'empleados'
 const empleados = mongoose.model('empleados', empleadosSchema);
