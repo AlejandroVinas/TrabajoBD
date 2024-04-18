@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cade"
+  },
+  "id": 5,
+  "id_cliente": 1,
+  "id_producto": 1,
+  "cantidad": 2,
+  "total_venta": {
+    "$numberDecimal": "119.98"
+  },
+  "fecha_venta": {
+    "$date": "2023-04-01T08:30:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cadf"
+  },
+  "id": 6,
+  "id_cliente": 2,
+  "id_producto": 2,
+  "cantidad": 1,
+  "total_venta": {
+    "$numberDecimal": "49.94"
+  },
+  "fecha_venta": {
+    "$date": "2023-05-15T12:45:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cae0"
+  },
+  "id": 7,
+  "id_cliente": 3,
+  "id_producto": 3,
+  "cantidad": 3,
+  "total_venta": {
+    "$numberDecimal": "209.97"
+  },
+  "fecha_venta": {
+    "$date": "2023-06-20T14:20:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cae1"
+  },
+  "id": 8,
+  "id_cliente": 1,
+  "id_producto": 2,
+  "cantidad": 1,
+  "total_venta": {
+    "$numberDecimal": "49.99"
+  },
+  "fecha_venta": {
+    "$date": "2023-07-10T07:00:00.000Z"
+  },
+  "__v": 0
+}]

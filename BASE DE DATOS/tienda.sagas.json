@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7caa8"
+  },
+  "ID": 201,
+  "NombreSaga": "Forza Horizon",
+  "NumeroDeTitulos": 3,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7caa9"
+  },
+  "ID": 202,
+  "NombreSaga": "Gran Turismo",
+  "NumeroDeTitulos": 2,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7caaa"
+  },
+  "ID": 203,
+  "NombreSaga": "F1",
+  "NumeroDeTitulos": 3,
+  "__v": 0
+}]

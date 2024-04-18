@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cae3"
+  },
+  "id": 1,
+  "nombre": "Juan",
+  "apellido": "Perez",
+  "correo": "juan12@gmail.com",
+  "telefono": "123-456-789",
+  "direccion": "Calle 123, Ciudad",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cae4"
+  },
+  "id": 2,
+  "nombre": "Maria",
+  "apellido": "Gomez",
+  "correo": "maria@hotmail.com",
+  "telefono": "456-789-023",
+  "direccion": "Av Principal, Pueblo",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cae5"
+  },
+  "id": 3,
+  "nombre": "Luis",
+  "apellido": "Martinez",
+  "correo": "luis@gmail.com",
+  "telefono": "789-012-346",
+  "direccion": "Apartado Postal 456, Villa",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cae6"
+  },
+  "id": 4,
+  "nombre": "Sergio",
+  "apellido": "Torres",
+  "correo": "SergioT@gmail.com",
+  "telefono": "259-101-023",
+  "direccion": "Calle 123, Ciudad",
+  "__v": 0
+}]

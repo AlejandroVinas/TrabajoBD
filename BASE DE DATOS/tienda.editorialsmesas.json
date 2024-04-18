@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cac7"
+  },
+  "id": 1,
+  "nombre": "Zacatrus",
+  "juegos_en_tienda": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cac8"
+  },
+  "id": 2,
+  "nombre": "Libellud",
+  "juegos_en_tienda": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cac9"
+  },
+  "id": 3,
+  "nombre": "Tranjis Games",
+  "juegos_en_tienda": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7caca"
+  },
+  "id": 4,
+  "nombre": "Z-Man Games",
+  "juegos_en_tienda": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cacb"
+  },
+  "id": 5,
+  "nombre": "Devir",
+  "juegos_en_tienda": 1,
+  "__v": 0
+}]

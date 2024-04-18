@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cabb"
+  },
+  "ID": 1,
+  "Genero": "Metroidvania",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cabc"
+  },
+  "ID": 2,
+  "Genero": "Pesca",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cabd"
+  },
+  "ID": 3,
+  "Genero": "Surrealismo",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cabe"
+  },
+  "ID": 4,
+  "Genero": "Sátira",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cabf"
+  },
+  "ID": 5,
+  "Genero": "Misterio",
+  "__v": 0
+}]

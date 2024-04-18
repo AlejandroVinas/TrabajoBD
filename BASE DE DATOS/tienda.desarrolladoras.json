@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cab5"
+  },
+  "ID": 1,
+  "Desarrolladora": "Team Cherry",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cab6"
+  },
+  "ID": 2,
+  "Desarrolladora": "Black Salt Games",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cab7"
+  },
+  "ID": 3,
+  "Desarrolladora": "Garage Heathen",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cab8"
+  },
+  "ID": 4,
+  "Desarrolladora": "Consumer Softproduct",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cab9"
+  },
+  "ID": 5,
+  "Desarrolladora": "Lucas Pope",
+  "__v": 0
+}]

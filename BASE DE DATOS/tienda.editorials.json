@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7caa4"
+  },
+  "ID": 301,
+  "NombreEditorial": "Microsoft",
+  "NumeroDeTitulos": 3,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7caa5"
+  },
+  "ID": 302,
+  "NombreEditorial": "Sony",
+  "NumeroDeTitulos": 2,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7caa6"
+  },
+  "ID": 303,
+  "NombreEditorial": "EA",
+  "NumeroDeTitulos": 3,
+  "__v": 0
+}]

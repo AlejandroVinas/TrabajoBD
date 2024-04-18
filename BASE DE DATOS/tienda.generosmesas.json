@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cacd"
+  },
+  "ID": 1,
+  "Genero": "Party",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cace"
+  },
+  "ID": 2,
+  "Genero": "Abstracto",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cacf"
+  },
+  "ID": 3,
+  "Genero": "RPG",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cad0"
+  },
+  "ID": 4,
+  "Genero": "Rogue-Like",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "662119f32ea10f92adc7cad1"
+  },
+  "ID": 5,
+  "Genero": "Estrategia",
+  "__v": 0
+}]
