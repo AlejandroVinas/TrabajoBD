@@ -1,110 +1,96 @@
 import mongoose from 'mongoose';
-import fetch from 'node-fetch';
-mongoose.connect('mongodb://127.0.0.1:27017/tienda');
 
+// Conexión a la base de datos MongoDB
+mongoose.connect('mongodb://localhost:27017/tienda', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
 
-/*
-const advisorSchema = new mongoose.Schema({
-      s_ID: {type:String},
-      i_ID: {type:String}
-});
-
-let advisor =new mongoose.model('advisor', advisorSchema);
-
-let API = 'http://localhost:8000';
-
-async function getdata() {
-  const res = await fetch(API);
-  const data = await res.json();
-  console.log(data.advisor);
-  try {
-    let inserted = await advisor.insertMany(data.advisor);
-    //console.log(inserted);
-    process.exit(0);
-  } catch (e) {
-    console.log('Some error');
-    console.log(e);
-    process.exit(0);
-  }
-}
-
-getdata();*/
-
-let API = 'http://localhost:8000';
-
-const editorialsSchema = new mongoose.Schema({
-   id:{type:Number},
-   nombre:{type:String},
-   juegos_en_tienda:{type:Number}
-});
-
-const generosSchema = new mongoose.Schema({
-	ID:{type:Number},
-	Genero:{type:String}
-});
-
-const stocksSchema = new mongoose.Schema({
-  ID:{type:Number},
-  Nombre:{type:String},
-  Unidades:{type:Number},
-  Genero:{type:String},
-  Editorial:{type:String},
-  Precio:{type:String}
- });
- 
- const desarrolladoraSchema = new mongoose.Schema({
-   ID:{type:Number},
-   Desarrolladora:{type:String}
-});
-
-const generoSchema = new mongoose.Schema({
-	ID:{type:Number},
-	Genero:{type:String}
-});
-
-const stockSchema = new mongoose.Schema({
-  ID:{type:Number},
-  Nombre:{type:String},
-  stock:{type:Number},
-  Genero:{type:String},
-  Desarrollador:{type:String},
-  Precio:{type:String}
-  });
-
-const stockconduccionSchema = new mongoose.Schema({
-  ID:{type:Number},
-  Nombre:{type:String},
-  Editorial:{type:String},
-  Saga:{type:String},
-  Precio:{type:Number},
-  Stock:{type:Number}
-});
 
 const editorialSchema = new mongoose.Schema({
-  ID:{type:Number},
-  NombreEditorial:{type:String},
-  NumeroDeTitulos:{type:Number}
+   ID: Number,
+   NombreEditorial: String,
+   NumeroDeTitulos: Number
 });
+editorialSchema.index({ID:1},{unique:true});
 
 const sagasSchema = new mongoose.Schema({
-  ID:{type:Number},
-  NombreSaga:{type:String},
-  NumeroDeTitulos:{type:Number}
-  });
-  
-  const empleadosSchema = new mongoose.Schema({
-  id:{type:Number},
-  nombre:{type:String},
-  apellido:{type:String},
-  correo:{type:String},
-  telefono:{type:String},
-  direccion:{type:String},
-  fecha_contratacion:{type: Date, default: Date.now},
-  salario:{type:mongoose.Types.Decimal128},
-  cargo:{type:String}
-  });
-  
-  const encargosSchema = new mongoose.Schema({
+	ID: Number,
+	NombreSaga: String,
+    NumeroDeTitulos: Number
+});
+sagasSchema.index({ID:1},{unique:true});
+
+const stockconduccionSchema = new mongoose.Schema({
+  ID: Number,
+  Nombre: String,
+  Editorial: String,
+  Saga: String,
+  Precio: Number,
+  Stock: Number
+ });
+stockconduccionSchema.index({ID:1},{unique:true});
+
+const desarrolladoraSchema = new mongoose.Schema({
+  ID: Number,
+  Desarrolladora: String
+});
+
+desarrolladoraSchema.index({ ID: 1 }, { unique: true });
+
+const generoSchema = new mongoose.Schema({
+ ID: Number,
+ Genero: String
+});
+
+generoSchema.index({ ID: 1 }, { unique: true });
+
+const stockSchema = new mongoose.Schema({
+ ID: Number,
+ Nombre: String,
+ stock: Number,
+ Genero: String,
+ Desarrollador: String,
+ Precio: Number
+});
+
+stockSchema.index({ ID: 1 }, { unique: true });
+
+const editorialsmesaSchema = new mongoose.Schema({
+  id: Number,
+  nombre: String,
+  juegos_en_tienda: Number
+});
+editorialsmesaSchema.index({ id: 1},{ unique: true });
+
+const generosmesaSchema = new mongoose.Schema({
+ ID: Number,
+ Genero: String
+});
+generosmesaSchema.index({ ID: 1 }, { unique: true });
+
+const stocksmesaSchema = new mongoose.Schema({
+ ID: Number,
+ Nombre: String,
+ Unidades:Number,
+ Genero:String,
+ Editorial:String,
+ Precio:String
+});
+stocksmesaSchema.index({ ID: 1 }, { unique: true });
+
+const empleadosSchema = new mongoose.Schema({
+  id: Number,
+  nombre: String,
+  apellido: String,
+  correo: String,
+  telefono: String,
+  direccion: String,
+  fecha_contratacion: Date,
+  salario: Number,
+  cargo: String
+});
+empleadosSchema.index({ id: 1 }, { unique: true });
+
+const encargosSchema = new mongoose.Schema({
   id:{type:Number},
   id_cliente:{type:Number},
   id_producto:{type:Number},
@@ -112,8 +98,9 @@ const sagasSchema = new mongoose.Schema({
   total_venta:{type:mongoose.Types.Decimal128},
   fecha_venta:{type: Date, default: Date.now}
   });
-  
-  const miembrosSchema = new mongoose.Schema({
+encargosSchema.index({ id: 1 }, { unique: true });
+
+const miembrosSchema = new mongoose.Schema({
   id:{type:Number},
   nombre:{type:String},
   apellido:{type:String},
@@ -121,55 +108,146 @@ const sagasSchema = new mongoose.Schema({
   telefono:{type:String},
   direccion:{type:String}
   });
-  
+miembrosSchema.index({ id: 1 }, { unique: true });
+
+const editorial = mongoose.model('editorial', editorialSchema);
+const sagas = mongoose.model('sagas', sagasSchema);
+const stockconduccion = mongoose.model('stockconduccion', stockconduccionSchema);
+const desarrolladora = mongoose.model('desarrolladora', desarrolladoraSchema);
+const genero = mongoose.model('genero', generoSchema);
+const stock = mongoose.model('stock', stockSchema);
+const editorialsmesa = mongoose.model('editorialsmesa', editorialsmesaSchema);
+const generosmesa = mongoose.model('generosmesa', generosmesaSchema);
+const stocksmesa = mongoose.model('stocksmesa', stocksmesaSchema);
+const empleados = mongoose.model('empleados', empleadosSchema);
+const encargos = mongoose.model('encargos', encargosSchema);
+const miembros = mongoose.model('miembros', miembrosSchema);
 
 
+const datoseditorial = [
+    {ID: 301, NombreEditorial: 'Microsoft', NumeroDeTitulos: 3 },
+    {ID: 302, NombreEditorial: 'Sony', NumeroDeTitulos: 2 },
+    {ID: 303, NombreEditorial: 'EA', NumeroDeTitulos: 3 }
+];
+const datossagas = [
+    {ID: 201, NombreSaga: 'Forza Horizon', NumeroDeTitulos: 3 },
+    {ID: 202, NombreSaga: 'Gran Turismo', NumeroDeTitulos: 2 },
+    {ID: 203, NombreSaga: 'F1', NumeroDeTitulos: 3 }
+];
+	
+const datosstockconduccion = [
+    { ID: 101, Nombre: 'Forza Horizon 3', Editorial: 'Microsoft', Saga: 'Forza Horizon', Precio: '39.99', Stock: '3'},
+    { ID: 102, Nombre: 'Forza Horizon 4', Editorial: 'Microsoft', Saga: 'Forza Horizon', Precio: '49.99', Stock: '28'},
+    { ID: 103, Nombre: 'Forza Horizon 5', Editorial: 'Microsoft', Saga: 'Forza Horizon', Precio: '69.99', Stock: '176'},
+    { ID: 104, Nombre: 'Gran Turismo 5', Editorial: 'Sony', Saga: 'Gran Turismo', Precio: '24.99', Stock: '7'},
+    { ID: 105, Nombre: 'Gran Turismo 7', Editorial: 'Sony', Saga: 'Gran Turismo', Precio: '59.99', Stock: '168'},
+    { ID: 106, Nombre: 'F1 21', Editorial: 'EA', Saga: 'F1', Precio: '19.99', Stock: '1'},
+    { ID: 107, Nombre: 'F1 22', Editorial: 'EA', Saga: 'F1', Precio: '39.99', Stock: '14'},
+    { ID: 108, Nombre: 'F1 23', Editorial: 'EA', Saga: 'F1', Precio: '59.99', Stock: '210'},
+	];
 
-let editorials =new mongoose.model('editorials', editorialsSchema);
-let generos =new mongoose.model('generos', generosSchema);
-let stocks =new mongoose.model('stocks', stocksSchema);
-let desarrolladora =new mongoose.model('desarrolladora', editorialsSchema);
-let genero =new mongoose.model('genero', generosSchema);
-let stock =new mongoose.model('stock', stocksSchema);
-let stockconduccion =new mongoose.model('stockconduccion', stockconduccionSchema);
-let editorial =new mongoose.model('editorial', editorialSchema);
-let sagas =new mongoose.model('sagas', sagasSchema);
-let empleados =new mongoose.model('empleados', empleadosSchema);
-let encargos =new mongoose.model('encargos', encargosSchema);
-let miembros =new mongoose.model('miembros', miembrosSchema);
+  const datosdesarrolladora = [
+    {ID: 1, Desarrolladora: 'Team Cherry' },
+    {ID: 2, Desarrolladora: 'Black Salt Games' },
+    {ID: 3, Desarrolladora: 'Garage Heathen' },
+    {ID: 4, Desarrolladora: 'Consumer Softproduct' },
+    {ID: 5, Desarrolladora: 'Lucas Pope' }
+];
+const datosgenero = [
+    {ID: 1, Genero: 'Metroidvania'},
+    {ID: 2, Genero: 'Pesca'},
+    {ID: 3, Genero: 'Surrealismo'},
+    {ID: 4, Genero: 'Sátira'},
+    {ID: 5, Genero: 'Misterio'}
+];
+	
+const datosstock = [
+    { ID: 1, Nombre: 'Hollow Knight', stock: 19, Genero: 'Metroidvania', Desarrollador: 'Team Cherry', Precio: 10},
+    { ID: 2, Nombre: 'Dredge', stock: 8, Genero: 'Pesca', Desarrollador: 'Black Salt Games', Precio: 5},
+    { ID: 3, Nombre: 'Whos Lila', stock: 50, Genero: 'Surrealismo', Desarrollador: 'Garage Heathen', Precio: 10},
+    { ID: 4, Nombre: 'Cruelty Squad', stock: 27, Genero: 'Sátira', Desarrollador: 'Consumer Softproducts', Precio: 15},
+    { ID: 5, Nombre: 'Return of the Obra Dinn', stock: 6, Genero: 'Misterio', Desarrollador: 'Lucas Pope', Precio: 15}
+];
 
+const datoseditoriasls = [
+  {id: 1, nombre: 'Zacatrus', juegos_en_tienda: 1 },
+  {id: 2, nombre: 'Libellud', juegos_en_tienda: 1 },
+  {id: 3, nombre: 'Tranjis Games', juegos_en_tienda: 1 },
+  {id: 4, nombre: 'Z-Man Games', juegos_en_tienda: 1 },
+  {id: 5, nombre: 'Devir', juegos_en_tienda: 1 }
+];
 
+const datosgenerosmesa = [
+  {ID: 1, Genero: 'Party'},
+  {ID: 2, Genero: 'Abstracto'},
+  {ID: 3, Genero: 'RPG'},
+  {ID:4, Genero: 'Rogue-Like'},
+  {ID: 5, Genero: 'Estrategia'}
+];
 
+const datosstocksmesa = [
+  { ID: 1, Nombre: 'Unanimo', Unidades: 25, Genero: 'Party', Editorial: 'Zacatrus', Precio: '13.95€'}
+  ,{ ID: 4, Nombre: 'Dixit', Unidades: 25, Genero: 'Party Abstracto', Editorial: 'Libellud', Precio: '29.50€'},
+  { ID: 2, Nombre: 'Mini Rogue', Unidades: 12, Genero: 'Rpg Rogue-Like', Editorial: 'Tranjis Fames', Precio: '22.95€'},
+  { ID: 3, Nombre: 'Pandemic', Unidades: 39, Genero: 'Cooperativo', Editorial: 'Z-Man Games', Precio: '29.99€'},
+  { ID: 5, Nombre: 'Catan', Unidades: 67, Genero: 'Estrategia', Editorial: 'Devir', Precio: '45€'}
+];
 
+const datosEmpleados = [
+  { id: 1, nombre: 'Carlos', apellido: 'Gonzalez', correo: 'carlos@gmail.com', telefono: '124-226-333', direccion: 'Av. Libertador 123', fecha_contratacion: new Date('2023-01-15'), salario: 2500.00, cargo: 'Gerente' },
+  { id: 2, nombre: 'Ana', apellido: 'Lopez', correo: 'ana@hotmail.com', telefono: '192-273-945', direccion: 'Calle 456', fecha_contratacion: new Date('2023-02-20'), salario: 1800.00, cargo: 'Vendedor'},
+  { id: 3, nombre: 'Pedro', apellido: 'Rodriguez', correo: 'pedro@gmail.com', telefono: '123-594-190', direccion: 'Av. Bolivar 789', fecha_contratacion: new Date('2023-03-20'), salario: 2000.00, cargo: 'Cajero'},
+  { id: 4, nombre: 'Ramiro', apellido: 'Gutierrez', correo: 'RamirG@hotmail.com', telefono: '102-591-145', direccion: 'Av. Camargo 234', fecha_contratacion: new Date('2023-05-20'), salario: 2000.00, cargo: 'Almacén'}
+];
 
-async function getdata() {
-const res = await fetch(API);
-const data = await res.json();
+const datosEncargos = [
+  { id: 5, id_cliente: 1, id_producto: 1, cantidad: 2, total_venta: 119.98, fecha_venta: new Date('2023-04-01 10:30:00') },
+  { id: 6, id_cliente: 2, id_producto: 2, cantidad: 1, total_venta: 49.94, fecha_venta: new Date('2023-05-15 14:45:00') },
+  { id: 7, id_cliente: 3, id_producto: 3, cantidad: 3, total_venta: 209.97, fecha_venta: new Date('2023-06-20 16:20:00') },
+  { id: 8, id_cliente: 1, id_producto: 2, cantidad: 1, total_venta: 49.99, fecha_venta: new Date('2023-07-10 09:00:00') }
+];
 
+const datosMiembros = [
+  { id: 1, nombre: 'Juan', apellido: 'Perez', correo: 'juan12@gmail.com', telefono: '123-456-789', direccion: 'Calle 123, Ciudad'},
+  { id: 2, nombre: 'Maria', apellido: 'Gomez', correo: 'maria@hotmail.com', telefono: '456-789-023', direccion: 'Av Principal, Pueblo'},
+  { id: 3, nombre: 'Luis', apellido: 'Martinez', correo: 'luis@gmail.com', telefono: '789-012-346', direccion: 'Apartado Postal 456, Villa'},
+  { id: 4, nombre: 'Sergio', apellido: 'Torres', correo: 'SergioT@gmail.com', telefono: '259-101-023', direccion: 'Calle 123, Ciudad'},
+];
 
-
-try {
- let inserted_a = await editorials.insertMany(data.editorials)
- let inserted_b = await generos.insertMany(data.generos);
- let inserted_c = await stocks.insertMany(data.stocks);
- let inserted_d = await desarrolladora.insertMany(data.desarrolladora);
- let inserted_e = await genero.insertMany(data.genero);
- let inserted_f = await stock.insertMany(data.stock);
- let inserted_g = await stockconduccion.insertMany(data.stockconduccion);
- let inserted_h = await editorial.insertMany(data.editorial);
- let inserted_i = await sagas.insertMany(data.sagas);
- let inserted_j = await empleados.insertMany(data.empleados);
- let inserted_k = await encargos.insertMany(data.encargos);
- let inserted_l = await miembros.insertMany(data.miembros);
-
- //console.log(inserted_a);
- process.exit(0);
-} catch (e) {
- console.log('Some error');
- console.log(e);
- process.exit(0);
-}
-}
-
-
-getdata();
+db.once('open', async () => {
+    try {
+     await editorial.deleteMany({});
+	   await sagas.deleteMany({});
+	   await stockconduccion.deleteMany({});
+     await desarrolladora.deleteMany({});
+	   await genero.deleteMany({});
+	   await stock.deleteMany({});
+     await editorialsmesa.deleteMany({});
+	   await generosmesa.deleteMany({});
+	   await stocksmesa.deleteMany({});
+     await empleados.deleteMany({});
+     await encargos.deleteMany({});
+     await miembros.deleteMany({});
+        
+     await editorial.insertMany(datoseditorial);
+	   await sagas.insertMany(datossagas);
+	   await stockconduccion.insertMany(datosstockconduccion);
+     await desarrolladora.insertMany(datosdesarrolladora);
+	   await genero.insertMany(datosgenero);
+	   await stock.insertMany(datosstock);
+     await editorialsmesa.insertMany(datoseditoriasls);
+	   await generosmesa.insertMany(datosgenerosmesa);
+	   await stocksmesa.insertMany(datosstocksmesa);
+     await empleados.insertMany(datosEmpleados);
+     await encargos.insertMany(datosEncargos);
+     await miembros.insertMany(datosMiembros)
+        
+       console.log('Datos insertados correctamente en las colecciónes "editorial","sagas" y "stockconduccion" de MongoDB.');
+        
+		mongoose.connection.close();
+		
+		
+    } catch (error) {
+        console.error('Error al insertar datos:', error);
+    }
+});
