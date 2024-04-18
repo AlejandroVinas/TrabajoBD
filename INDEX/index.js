@@ -242,7 +242,7 @@ db.once('open', async () => {
      await encargos.insertMany(datosEncargos);
      await miembros.insertMany(datosMiembros)
         
-       console.log('Datos insertados correctamente en las colecciónes "editorial","sagas" y "stockconduccion" de MongoDB.');
+       console.log('Datos de la tienda insertados correctamente en MongoDB.');
         
 		mongoose.connection.close();
 		
