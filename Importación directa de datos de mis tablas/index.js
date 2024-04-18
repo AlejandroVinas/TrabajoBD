@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 // Conexión a la base de datos MongoDB
-mongoose.connect('mongodb://localhost:27017/tienda_videojuegos', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/tienda', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 // Definir el esquema para la colección 'empleados'
