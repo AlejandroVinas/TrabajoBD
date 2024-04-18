@@ -10,10 +10,14 @@ const desarrolladoraSchema = new mongoose.Schema({
    Desarrolladora: String
 });
 
+desarrolladoraSchema.index({ ID: 1 }, { unique: true });
+
 const generoSchema = new mongoose.Schema({
 	ID: Number,
 	Genero: String
 });
+
+generoSchema.index({ ID: 1 }, { unique: true });
 
 const stockSchema = new mongoose.Schema({
   ID: Number,
@@ -23,6 +27,8 @@ const stockSchema = new mongoose.Schema({
   Desarrollador: String,
   Precio: Number
  });
+
+stockSchema.index({ ID: 1 }, { unique: true });
 
 const desarrolladora = mongoose.model('desarrolladora', desarrolladoraSchema);
 const genero = mongoose.model('genero', generoSchema);
